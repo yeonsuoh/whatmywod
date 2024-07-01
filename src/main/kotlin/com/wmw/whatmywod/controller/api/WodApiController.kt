@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class WodController(
+class WodApiController(
     private val wodService: WodService,
 ) {
 
