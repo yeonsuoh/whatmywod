@@ -12,4 +12,8 @@ class PR(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wod_id", nullable = false)
     val wod: Wod,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    val user: User,
 ) : BaseEntity()

@@ -14,6 +14,10 @@ class Wod(
     @JoinColumn(name = "workout_id", nullable = false)
     val workout: Workout,
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    val user: User,
+
     @Column(nullable = false)
     val date: LocalDateTime,
 
