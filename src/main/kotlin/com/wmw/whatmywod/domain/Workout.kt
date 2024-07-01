@@ -11,7 +11,4 @@ class Workout(
 
     @Column(nullable = false)
     val name: String,
-
-    @Column(name = "user_id", nullable = false)
-    val userId: Long // 사용자 ID
 ) : BaseEntity()
