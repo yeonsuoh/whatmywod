@@ -1,4 +1,4 @@
-package com.wmw.whatmywod.controller
+package com.wmw.whatmywod.controller.api
 
 import com.wmw.whatmywod.domain.Wod
 import com.wmw.whatmywod.service.WodService
