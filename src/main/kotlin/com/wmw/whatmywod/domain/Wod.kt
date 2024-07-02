@@ -1,6 +1,7 @@
 package com.wmw.whatmywod.domain
 
 import jakarta.persistence.*
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity
@@ -19,7 +20,7 @@ class Wod(
     val user: User,
 
     @Column(nullable = false)
-    val date: LocalDateTime,
+    val date: LocalDate,
 
     val weight: Long? = null,
 
