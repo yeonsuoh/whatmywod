@@ -5,6 +5,20 @@
     <title>Workout</title>
 </head>
 <body>
-<h1>save workout</h1>
+<ul>
+    <li th:each="workout : ${workouts}">
+        <span th:text="${workout.name}"></span>
+    </li>
+</ul>
+<form th:action="@{/workout}" method="post">
+    <div>
+        <label for="name">enter new workout</label>
+        <input type="text" id="name" name="name"
+               class="form-control" placeholder="enter new workout">
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
 </body>
 </html>
