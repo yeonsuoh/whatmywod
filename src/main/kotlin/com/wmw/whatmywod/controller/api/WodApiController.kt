@@ -18,14 +18,6 @@ class WodApiController(
     private val wodService: WodService,
     private val wodRepository: WodRepository,
 ) {
-
-    @GetMapping
-    fun findAllWods(model: Model) : String{
-        val wods = wodService.findAll()
-        model.addAttribute("wods", wods)
-        return "dashboard"
-    }
-
     @ResponseBody
     @PostMapping("/wods")
     fun saveWod(

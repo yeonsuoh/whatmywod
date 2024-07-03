@@ -17,6 +17,12 @@ class WodController(
     private val wodService: WodService,
     private val workoutService: WorkoutService,
 ) {
+    @GetMapping
+    fun findAllWods(model: Model) : String{
+        val wods = wodService.findAll()
+        model.addAttribute("wods", wods)
+        return "dashboard"
+    }
 
     @GetMapping("/wod")
     fun showWodForm(model: Model): String {
