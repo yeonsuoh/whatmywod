@@ -3,17 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Add WOD</title>
-    <!-- Include CSS for calendar widget -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script>
-        $(function() {
-            $("#date").datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
-        });
-    </script>
 </head>
 <body>
 <h1>Add WOD</h1>
@@ -21,7 +10,6 @@
     <div>
         <label for="workoutId">Workout:</label>
         <select id="workoutId" th:field="*{workoutId}">
-<!--            <option value="" disabled selected>Select a workout</option>-->
             <option th:each="workout : ${workouts}" th:value="${workout.id}" th:text="${workout.name}"></option>
         </select>
     </div>
@@ -31,7 +19,7 @@
     </div>
     <div>
         <label for="date">Date:</label>
-        <input type="text" id="date" th:field="*{date}" />
+        <input type="date" id="date" th:field="*{date}" />
     </div>
     <div>
         <label for="weight">Weight:</label>

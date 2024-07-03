@@ -2,20 +2,32 @@ package com.wmw.whatmywod.controller.api
 
 import com.wmw.whatmywod.domain.Wod
 import com.wmw.whatmywod.dto.WodRequestDto
+import com.wmw.whatmywod.repository.WodRepository
 import com.wmw.whatmywod.service.WodService
 import org.springframework.http.ResponseEntity
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
+import java.time.temporal.WeekFields
+import java.util.*
 
-@RestController
-@RequestMapping("/wods")
+
+@Controller
 class WodApiController(
     private val wodService: WodService,
+    private val wodRepository: WodRepository,
 ) {
 
     @GetMapping
-    fun findAllWods() : ResponseEntity<List<Wod>> = ResponseEntity.ok(wodService.findAll())
+    fun findAllWods(model: Model) : String{
+        val wods = wodService.findAll()
+        model.addAttribute("wods", wods)
+        return "dashboard"
+    }
 
-    @PostMapping
+    @ResponseBody
+    @PostMapping("/wods")
     fun saveWod(
         @RequestBody
         request: WodRequestDto
