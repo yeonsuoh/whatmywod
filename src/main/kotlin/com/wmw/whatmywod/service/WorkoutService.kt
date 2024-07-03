@@ -22,4 +22,8 @@ class WorkoutService(
             entity -> WorkoutResponseDto(entity.name)
         }
     }
+
+    fun findAll() : List<Workout> {
+        return workoutRepository.findAll()
+    }
 }
