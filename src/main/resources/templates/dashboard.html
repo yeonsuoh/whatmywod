@@ -49,10 +49,10 @@
 <h2>All WODs</h2>
 <ul>
     <li th:each="wod : ${wods}">
-        <a href="javascript:void(0)" th:data-id="${wod.id}" th:data-workout="${wod.workout.name}"
-           th:data-user="${wod.user.email}" th:data-date="${wod.date}" th:data-weight="${wod.weight}"
+        <a href="javascript:void(0)" th:data-id="${wod.id}" th:data-workout="${wod.workoutName}"
+           th:data-date="${wod.date}" th:data-weight="${wod.weight}"
            th:data-times="${wod.times}" th:data-description="${wod.description}" class="wod-link"
-           th:text="${wod.workout.name}">WOD Name</a>
+           th:text="${wod.workoutName}">WOD Name</a>
     </li>
 </ul>
 
@@ -62,7 +62,6 @@
         <span class="close">&times;</span>
         <h2>WOD Details</h2>
         <p><strong>Workout:</strong> <span id="modal-workout"></span></p>
-        <p><strong>User:</strong> <span id="modal-user"></span></p>
         <p><strong>Date:</strong> <span id="modal-date"></span></p>
         <p><strong>Weight:</strong> <span id="modal-weight"></span></p>
         <p><strong>Times:</strong> <span id="modal-times"></span></p>
@@ -79,7 +78,6 @@
         document.querySelectorAll(".wod-link").forEach(function(link) {
             link.onclick = function() {
                 document.getElementById("modal-workout").innerText = this.getAttribute("data-workout");
-                document.getElementById("modal-user").innerText = this.getAttribute("data-user");
                 document.getElementById("modal-date").innerText = this.getAttribute("data-date");
                 document.getElementById("modal-weight").innerText = this.getAttribute("data-weight");
                 document.getElementById("modal-times").innerText = this.getAttribute("data-times");

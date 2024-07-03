@@ -1,11 +1,14 @@
 package com.wmw.whatmywod.service
 
 import com.wmw.whatmywod.domain.Wod
+import com.wmw.whatmywod.dto.WodListResponseDto
 import com.wmw.whatmywod.dto.WodRequestDto
 import com.wmw.whatmywod.repository.UserRepository
 import com.wmw.whatmywod.repository.WodRepository
 import com.wmw.whatmywod.repository.WorkoutRepository
 import org.springframework.stereotype.Service
+import java.time.temporal.WeekFields
+import java.util.*
 
 @Service
 class WodService(
@@ -14,8 +17,24 @@ class WodService(
     private val workoutRepository: WorkoutRepository,
 ) {
 
-    fun findAll(): List<Wod> {
-        return wodRepository.findAll();
+    fun findAll(): List<WodListResponseDto> {
+
+        val wods = wodRepository.findAll();
+        return wods.map {
+            val weekOfYear = it.date.get(WeekFields.of(Locale.getDefault()).weekOfYear()).toLong()
+            WodListResponseDto(
+                id = it.id,
+                workoutName = it.workout.name,
+                userId = it.user.id,
+                date = it.date,
+                weight = it.weight,
+                times = it.times,
+                description = it.description,
+                year = it.date.year.toLong(),
+                month = it.date.monthValue.toLong(),
+                week = weekOfYear
+            )
+        }
     }
 
     fun saveWod(request: WodRequestDto): Wod {

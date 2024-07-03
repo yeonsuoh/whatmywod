@@ -10,7 +10,7 @@ data class WodListResponseDto(
     val weight: Long?,
     val times: Long?,
     val description: String?,
-    val year: LocalDate,
-    val month: LocalDate,
+    val year: Long,
+    val month: Long,
     val week: Long,
 )
