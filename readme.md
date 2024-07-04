@@ -1,3 +1,8 @@
+# todo 
+- after saving wod, redirect to dashboard
+- when saving wod, date should provide default value
+- template engine,,  thymeleaf or mustache
+
 # issues
 When you set ddl-auto: update in the application.yml file for Hibernate or other ORM tools, 
 it automatically manages the database table schema in the following ways:
